@@ -1,0 +1,35 @@
+abstract final class AppSpacing {
+  static const double contentMaxWidth = 390;
+  static const double contentHorizontal = 23;
+  static const double pageTop = 63;
+  static const double backButtonTop = 4;
+  static const double headingTopGap = 20;
+  static const double sectionGap = 16;
+  static const double socialSectionGap = 24;
+  static const double socialGap = 12;
+  static const double fieldHeight = 56;
+  static const double fieldRadius = 4;
+  static const double fieldPadding = 12;
+  static const double fieldVerticalPadding = 16;
+  static const double buttonHeight = 48;
+  static const double buttonRadius = 100;
+  static const double buttonTextSize = 16;
+  static const double headingSize = 32;
+  static const double headingLineHeight = 1.08;
+  static const double headingLetterSpacing = -0.4;
+  static const double bodySize = 16;
+  static const double bodyLineHeight = 1.4;
+  static const double captionSize = 12;
+  static const double backButtonSize = 40;
+  static const double iconSize = 24;
+  static const double logoWidth = 175;
+  static const double logoHeight = 80;
+  static const double confirmationImageSize = 100;
+  static const double confirmationTextSize = 24;
+  static const double onboardingVertical = 100;
+  static const double onboardingTitleGap = 48;
+  static const double onboardingSectionGap = 60;
+  static const double onboardingControlGap = 20;
+  static const double onboardingDropdownGap = 14;
+  static const double onboardingHeadingSize = 24;
+}
