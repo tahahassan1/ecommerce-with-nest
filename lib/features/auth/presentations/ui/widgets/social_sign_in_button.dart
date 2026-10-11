@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/extensions/theme_extension.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
@@ -29,7 +30,7 @@ class SocialSignInButton extends StatelessWidget {
           foregroundColor: AppColors.textPrimary,
           side: BorderSide.none,
           shape: const StadiumBorder(),
-          textStyle: Theme.of(context).textTheme.labelLarge,
+          textStyle: context.textTheme.labelLarge,
         ),
         icon: isSvg
             ? SvgPicture.asset(

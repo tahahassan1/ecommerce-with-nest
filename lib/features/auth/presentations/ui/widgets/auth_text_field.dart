@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/extensions/theme_extension.dart';
 import '../../../../../core/theme/app_spacing.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -21,7 +22,7 @@ class AuthTextField extends StatelessWidget {
       child: TextFormField(
         keyboardType: keyboardType,
         obscureText: obscureText,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: context.textTheme.bodyLarge,
         decoration: InputDecoration(hintText: label),
       ),
     );

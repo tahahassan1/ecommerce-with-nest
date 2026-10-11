@@ -1,5 +1,7 @@
 abstract final class AppSpacing {
   static const double contentMaxWidth = 390;
+  static const double tabletFormMaxWidth = 480;
+  static const double tabletContentMaxWidth = 640;
   static const double contentHorizontal = 23;
   static const double pageTop = 63;
   static const double backButtonTop = 4;

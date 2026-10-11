@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/extensions/theme_extension.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../../../../../core/theme/app_styles.dart';
+import '../../../../../core/widgets/app_layout_builder.dart';
 import 'back_button_circle.dart';
 
 class AuthPageFrame extends StatelessWidget {
@@ -21,47 +23,53 @@ class AuthPageFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, viewport) => Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: AppSpacing.contentMaxWidth,
-              ),
-              child: SizedBox(
-                height: viewport.maxHeight,
-                child: SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: viewport.maxHeight),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.contentHorizontal,
+      body: AppLayoutBuilder(
+        mobileLayout: (context) =>
+            _buildLayout(context, maxWidth: AppSpacing.contentMaxWidth),
+        tabletLayout: (context) =>
+            _buildLayout(context, maxWidth: AppSpacing.tabletFormMaxWidth),
+      ),
+    );
+  }
+
+  Widget _buildLayout(BuildContext context, {required double maxWidth}) {
+    final mediaQuery = MediaQuery.of(context);
+    final viewportHeight =
+        mediaQuery.size.height -
+        mediaQuery.padding.vertical -
+        mediaQuery.viewInsets.vertical;
+
+    return SafeArea(
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: SizedBox(
+            height: viewportHeight,
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: viewportHeight),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.contentHorizontal,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: showBackButton
+                            ? AppSpacing.backButtonTop
+                            : AppSpacing.pageTop +
+                                  AppSpacing.backButtonSize +
+                                  AppSpacing.headingTopGap,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: showBackButton
-                                ? AppSpacing.backButtonTop
-                                : AppSpacing.pageTop +
-                                      AppSpacing.backButtonSize +
-                                      AppSpacing.headingTopGap,
-                          ),
-                          if (showBackButton) ...[
-                            BackButtonCircle(onPressed: onBack),
-                            const SizedBox(height: AppSpacing.headingTopGap),
-                          ],
-                          Text(
-                            title,
-                            style: AppStyles.heading(
-                              Theme.of(context).textTheme,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.sectionGap * 2),
-                          child,
-                        ],
-                      ),
-                    ),
+                      if (showBackButton) ...[
+                        BackButtonCircle(onPressed: onBack),
+                        const SizedBox(height: AppSpacing.headingTopGap),
+                      ],
+                      Text(title, style: AppStyles.heading(context.textTheme)),
+                      const SizedBox(height: AppSpacing.sectionGap * 2),
+                      child,
+                    ],
                   ),
                 ),
               ),

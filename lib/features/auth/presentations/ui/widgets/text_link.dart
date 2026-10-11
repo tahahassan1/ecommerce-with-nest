@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/extensions/theme_extension.dart';
 import '../../../../../core/theme/app_colors.dart';
 
 class TextLink extends StatelessWidget {
@@ -18,7 +19,7 @@ class TextLink extends StatelessWidget {
   Widget build(BuildContext context) => Wrap(
     crossAxisAlignment: WrapCrossAlignment.center,
     children: [
-      Text(prefix, style: Theme.of(context).textTheme.bodySmall),
+      Text(prefix, style: context.textTheme.bodySmall),
       TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
@@ -29,8 +30,9 @@ class TextLink extends StatelessWidget {
         ),
         child: Text(
           action,
-          style: Theme.of(context).textTheme.bodySmall
-              ?.copyWith(fontWeight: FontWeight.w700),
+          style: context.textTheme.bodySmall?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     ],
